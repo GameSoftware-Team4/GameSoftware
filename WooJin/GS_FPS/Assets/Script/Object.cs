@@ -24,7 +24,7 @@ public class Object : MonoBehaviour
     {
         if(collision.collider.tag == "Bullet")
         {
-            Debug.Log("しししし");
+            
             this.health -= 10;
             Destroy(collision.gameObject);
         }
