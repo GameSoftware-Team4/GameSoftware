@@ -19,7 +19,7 @@ public class Skill : MonoBehaviour
     }
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log("�浹");
+        Debug.Log("�浹");
         if (s != null)
         {
             m = other.gameObject.GetComponent<MonsterAI>();

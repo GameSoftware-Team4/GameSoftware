@@ -15,13 +15,13 @@ public class PlayerControll : MonoBehaviour
 	private bool isGround = true;
 	private bool isCrouch = true;
 
-	// ¾É¾ÒÀ» ¶§ ¾ó¸¶³ª ¾ÉÀ»Áö °áÁ¤ÇÏ´Â º¯¼ö
+	// ï¿½É¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ó¸¶³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	[SerializeField]
 	private float crouchPosY;
 	private float originPosY;
 	private float applyCrouchPosY;
 
-	// ¶¥ ÂøÁö ¿©ºÎ
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private BoxCollider capsule;
 
 	[SerializeField]
@@ -49,15 +49,15 @@ public class PlayerControll : MonoBehaviour
 		applyCrouchPosY = originPosY;
 	}
 
-	void Update()  // ÄÄÇ»ÅÍ¸¶´Ù ´Ù¸£Áö¸¸ ´ë·« 1ÃÊ¿¡ 60¹ø ½ÇÇà
+	void Update()  
 	{
 		IsGround();
 		TryJump();
 		TryRun();
 		TryCrouch();
-		Move();                 // 1?? Å°º¸µå ÀÔ·Â¿¡ µû¶ó ÀÌµ¿
-		CameraRotation();       // 2?? ¸¶¿ì½º¸¦ À§¾Æ·¡(Y) ¿òÁ÷ÀÓ¿¡ µû¶ó Ä«¸Þ¶ó X Ãà È¸Àü 
-		CharacterRotation();    // 3?? ¸¶¿ì½º ÁÂ¿ì(X) ¿òÁ÷ÀÓ¿¡ µû¶ó Ä³¸¯ÅÍ Y Ãà È¸Àü 
+		Move();                
+		CameraRotation();     
+		CharacterRotation();   
 	}
 
 	private void TryCrouch()
@@ -171,7 +171,7 @@ public class PlayerControll : MonoBehaviour
 		theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
 	}
 
-	private void CharacterRotation()  // ÁÂ¿ì Ä³¸¯ÅÍ È¸Àü
+	private void CharacterRotation() 
 	{
 		float _yRotation = Input.GetAxisRaw("Mouse X");
 		Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity;
