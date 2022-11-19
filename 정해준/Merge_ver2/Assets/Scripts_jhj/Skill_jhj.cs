@@ -7,7 +7,8 @@ public class Skill_jhj : MonoBehaviour
     
  
     float damage_jhj = 15;
-    Monster_jhj target_jhj; //스킬의 타겟은 오로지 몬스터 뿐
+    Mob_jhj target_jhj; //스킬의 타겟은 오로지 몬스터 뿐
+    //float scalespeed_jhj = 1f; 
 
     
     // Start is called before the first frame update
@@ -24,12 +25,12 @@ public class Skill_jhj : MonoBehaviour
     void OnParticleCollision(GameObject other)
     {
 
-                target_jhj = other.gameObject.GetComponent<Monster_jhj>();
+                target_jhj = other.gameObject.GetComponent<Mob_jhj>();
                 if (target_jhj != null)
                 {
                 
                     target_jhj.OnDamage(damage_jhj);
-                    Debug.Log(damage_jhj + "데미지!");
+                    
                 }
         
     }
@@ -38,13 +39,18 @@ public class Skill_jhj : MonoBehaviour
     {
 
 
-        target_jhj = other.gameObject.GetComponent<Monster_jhj>();
+        target_jhj = other.gameObject.GetComponent<Mob_jhj>();
         if (target_jhj != null)
         {
 
             target_jhj.OnDamage(damage_jhj);
-            Debug.Log(damage_jhj + "데미지!");
+            
         }
     }
+    public void LevelupSkill()
+    {
+        Debug.Log("level up");
+        damage_jhj += 5;
 
+    }
 }

@@ -18,7 +18,7 @@ public class SpawningPool_jhj : MonoBehaviour
 
     int monsterDeathcnt_jhj = 0;  //처치된 몬스터의 수를 저장하는 변수
 
-    int Level_up_jhj = 2; //레벨업에 필요한 처치된 몬스터의 수를 저장하는 변수
+    int Level_up_jhj = 5; //레벨업에 필요한 처치된 몬스터의 수를 저장하는 변수
 
 
     [SerializeField]
@@ -26,7 +26,7 @@ public class SpawningPool_jhj : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-          
+       
     }
 
     public void DestroyMonster() //몬스터가 처치됬을 때 존재하는 몬스터의 수를 줄이고 처치된 수를 증가
@@ -35,9 +35,8 @@ public class SpawningPool_jhj : MonoBehaviour
         monsterDeathcnt_jhj++;
         if(monsterDeathcnt_jhj >= Level_up_jhj) //만약 처치된 수가 level업 기준을 달성할 경우 엘리트 몹을 스폰
         {
-            SpawnElite();
-            keepmonstercnt_jhj += 3;  //유지할 개체수 증가
-        }
+            spawnLevelUp();  //유지할 개체수 증가
+        } //경험치 시스템이 확립되면 삭제 후 spawnLevelUp함수 호출로 변경;
     }
     // Update is called once per frame
     void Update()
@@ -64,5 +63,11 @@ public class SpawningPool_jhj : MonoBehaviour
     
         Instantiate(elitemonster_jhj, spwanPosArray_jhj[Random.Range(0, 3)]);
         monsterDeathcnt_jhj = 0;
+    }
+    public void spawnLevelUp()
+    {
+        SpawnElite();
+        keepmonstercnt_jhj += 3;
+        Level_up_jhj += 1;
     }
 }

@@ -20,9 +20,9 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
 
     public Animator anim;
-
+    float enemy_speed = 3.5f;
     //열거형으로 정해진 상태값을 사용
-    enum State
+    public enum State
     {
         Idle,
         Run,
@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
         //만약 state가 idle이라면
         if (state == State.Idle)
         {
+            
             UpdateIdle();
         }
         else if (state == State.Run)
@@ -84,7 +85,7 @@ public class Enemy : MonoBehaviour
         }
 
         //타겟 방향으로 이동하다가
-        agent.speed = 3.5f;
+        agent.speed = enemy_speed;
         //요원에게 목적지를 알려준다.
         agent.destination = target.transform.position;
 
@@ -102,5 +103,21 @@ public class Enemy : MonoBehaviour
             //이렇게 state값을 바꿨다고 animation까지 바뀔까? no! 동기화를 해줘야한다.
             anim.SetTrigger("Run");
         }
+    }
+    
+
+   public void GetState(State s)
+    {
+        state = s;
+    }
+    IEnumerator WaitFor()
+    {
+        yield return new WaitForSeconds(2.5f);
+    }
+
+    public void SpeedChange(float new_speed)
+    {
+        enemy_speed = new_speed;
+        Debug.Log("속도" + enemy_speed);
     }
 }
