@@ -106,15 +106,6 @@ public class Enemy : MonoBehaviour
     }
     
 
-   public void GetState(State s)
-    {
-        state = s;
-    }
-    IEnumerator WaitFor()
-    {
-        yield return new WaitForSeconds(2.5f);
-    }
-
     public void SpeedChange(float new_speed)
     {
         enemy_speed = new_speed;
