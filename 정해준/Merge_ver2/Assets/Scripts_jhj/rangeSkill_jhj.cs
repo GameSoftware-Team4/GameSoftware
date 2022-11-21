@@ -4,7 +4,7 @@ using System.Collections;
 public class rangeSkill_jhj : MonoBehaviour
 {
     float damage_jhj = 50;
-    Monster_jhj target_jhj;
+    Mob mob;
     public GameObject skillEffect_jhj;
     GameObject player_jhj;
     void ExplosionDamage(Vector3 center, float radius)
@@ -15,14 +15,10 @@ public class rangeSkill_jhj : MonoBehaviour
         while (i < hitColliders_jhj.Length)
         {
 
-            target_jhj = hitColliders_jhj[i].gameObject.GetComponent<Monster_jhj>(); //타겟들이 몬스터를 계승하는지 검거
-            if(target_jhj != null) // 몬스터들만을 검거
+            target_jhj = hitColliders_jhj[i].gameObject.GetComponent<Mob_jhj>(); //타겟들이 몬스터를 계승하는지 검거
+            if(target_jhj.tag != null) // 몬스터들만을 검거
             {
 
-                
-                
-                Debug.Log("스킬");
-                
 
                 target_jhj.OnDamage(damage_jhj);
                 
@@ -34,13 +30,6 @@ public class rangeSkill_jhj : MonoBehaviour
         
     }
 
-    /*IEnumerator WaitForIt()
-
-    {
-        Debug.Log("지연");
-        yield return new WaitForSeconds(0.f);
-
-    }*/
 
    void Start()
     {
