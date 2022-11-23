@@ -8,11 +8,13 @@ public class TurretScript : MonoBehaviour
 	public GameObject enemy;
 	public string tagName;
 	public float shortDis;
+	GameObject child = null;
 
 	Quaternion quat = Quaternion.identity;
 	// Start is called before the first frame update
 	void Start()
 	{
+		child = transform.GetChild(1).gameObject;
 		quat.eulerAngles = new Vector3(90, 0, 0);
 		foundObj = new List<GameObject>(GameObject.FindGameObjectsWithTag(tagName));
 		shortDis = Vector3.Distance(gameObject.transform.position, foundObj[0].transform.position);
@@ -66,16 +68,16 @@ public class TurretScript : MonoBehaviour
         }
 
     }
+
+    private void Update()
+    {
+		Destroy(gameObject, 15f);
+    }
     private void Aim()
     {
 		Vector3 _direction = (enemy.transform.position - transform.position).normalized;
 		Quaternion _lookRoation = Quaternion.LookRotation(_direction);
 		Quaternion _rotation = Quaternion.Lerp(transform.rotation, _lookRoation, 0.2f);
 		transform.rotation = _rotation;
-    }
-
-    private void Update()
-    {
-		Destroy(gameObject, 15f);
     }
 }

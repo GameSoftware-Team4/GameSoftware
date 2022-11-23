@@ -6,14 +6,13 @@ public class TurretManagerScript : MonoBehaviour
 {
 	public GameObject turretPref;
 	public Transform player;
-
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.T))
-		{
-			Debug.Log("积己肯丰");
-			Instantiate(turretPref, player.position + new Vector3(5f,0,5f), player.transform.rotation);
-		}
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+			Debug.Log("磐房 积己 肯丰");
+			Instantiate(turretPref, player.transform.position + new Vector3(2.0f, 0f, 2.0f), transform.rotation);
+        }
 	}
 }

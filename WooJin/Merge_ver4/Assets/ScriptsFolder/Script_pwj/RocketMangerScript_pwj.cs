@@ -22,7 +22,8 @@ public class RocketMangerScript_pwj: MonoBehaviour
 	float delayTime = 1.5f;
 	float checkTime = 0f;
 	// Start is called before the first frame update
-	void Start(){
+	void Start()
+	{
 		gameManger = GameObject.Find("GameManager").GetComponent<GameManagerScript_pwj>();
 		// abc = GetComponent<GameManagerScript_pwj>().GetExp();
 		quat.eulerAngles = new Vector3(90, 0, 0);
@@ -38,14 +39,10 @@ public class RocketMangerScript_pwj: MonoBehaviour
 			if (missile1)
 			{
 				GameObject missile = Instantiate(missilePref, shotPos.position + new Vector3(0, 2, 0), shotPos.rotation);
-				if (missile2)
-				{
+				if(missile2)
 					Instantiate(missilePref, shotPos2.position + new Vector3(0, 2, 0), shotPos2.rotation);
-					if (missile3)
-					{
-						Instantiate(missilePref, shotPos3.position + new Vector3(0, 2, 0), shotPos3.rotation);
-					}
-				}
+				if(missile3)
+					Instantiate(missilePref, shotPos3.position + new Vector3(0, 2, 0), shotPos3.rotation);
 				checkTime = 0;
 			}
 		}
@@ -74,8 +71,10 @@ public class RocketMangerScript_pwj: MonoBehaviour
 		}
 	}
 
-    private void FixedUpdate(){
+    private void FixedUpdate()
+    {
 		CheckEXP();
+		Debug.Log("È¸ÀüÁß...");
 		transform.RotateAround(transform.position, Vector3.forward, 50 * Time.deltaTime);
     }
 }

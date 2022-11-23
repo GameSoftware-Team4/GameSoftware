@@ -49,12 +49,13 @@ public class RocketScript_pwj : MonoBehaviour
 		missileRig.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turn));
 		// Debug.Log(transform.rotation);
 	}
-	private void OnCollisionEnter(Collision collision)
-	{
-		if(collision.collider.CompareTag("Monster") || collision.collider.CompareTag("Terrain"))
-		{
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Monster") || collision.collider.CompareTag("Terrain"))
+        {
 			Destroy(this.gameObject);
 			GameObject obj = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+			// Destroy(obj);
 		}
-	}
+    }
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
 	// �� ���� ����
 	private CapsuleCollider capsule;
+	private SphereCollider sphere;
 
 	[SerializeField]
 	private float jumpForce;
@@ -50,7 +51,16 @@ public class PlayerController : MonoBehaviour
 		CharacterRotation();
 	}
 
-	private void IsGround()
+	private void expCollect()
+    {
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
+    private void IsGround()
 	{
 		isGround = Physics.Raycast(transform.position, Vector3.down, capsule.bounds.extents.y + 0.1f);
 
