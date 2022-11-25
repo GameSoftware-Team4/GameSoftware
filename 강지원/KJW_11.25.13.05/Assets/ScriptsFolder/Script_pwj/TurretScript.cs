@@ -11,7 +11,9 @@ public class TurretScript : MonoBehaviour
 	public float shortDis;
 	GameObject child = null;
 	public float shotDelay = 0;
-	RaycastHit hit;
+	private RaycastHit hit;
+	public ParticleSystem turretMuzzleFlash;
+	public float turretDamage = 20f;
 
 	Quaternion quat = Quaternion.identity;
 	// Start is called before the first frame update
@@ -64,15 +66,17 @@ public class TurretScript : MonoBehaviour
     private void FixedUpdate()
     {
 		shotDelay += Time.deltaTime;
-		// 에임 조준
+		// ???? ????
 		if (enemy != null)
 		{
 			Aim();
-			if(shotDelay > 0.3f)
+			if (shotDelay > 0.3f)
+			{
+				
 				DrawRay();
-
+			}
 		}
-		else // 조준했던 오브젝트가 파괴된다면, 다시 조준
+		else // ???????? ?????????? ??????????, ???? ????
 		{
 			FindEnemy();
 		}
@@ -93,12 +97,11 @@ public class TurretScript : MonoBehaviour
 
 	private void DrawRay()
     {
+
 		if(Physics.Raycast(transform.position, transform.forward, out hit, 50f))
         {
-			mobScript.curHealth -= 5;
-			// Debug.Log(hit.collider.transform.position);
-			shotDelay = 0;
-        }
+			hit.transform.GetComponent<Mob>().OnTurretDamage(turretDamage, transform.position);
+		}
         else
         {
 			Debug.Log("Target missing");

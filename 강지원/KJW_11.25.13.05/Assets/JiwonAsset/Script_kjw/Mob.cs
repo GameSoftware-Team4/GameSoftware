@@ -80,6 +80,16 @@ public class Mob : MonoBehaviour
         }
     }
 
+    public void OnTurretDamage(float damage, Vector3 _targetPos) //?? ??? ??
+    {
+        if (!isDead)
+        {
+            curHealth -= damage;
+            StartCoroutine(OnDamage());
+
+        }
+    }
+
     IEnumerator OnDamage()
     {
         mat.color = Color.blue;
