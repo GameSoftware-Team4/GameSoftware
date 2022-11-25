@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	float currentHealth = maxHealth;
 
 	PlayerManager playerManager;
+	public GameObject cu;
 
 	void Awake()
 	{
@@ -64,6 +65,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 		Look();
 		Move();
 		Jump();
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+			Debug.Log("Hello");
+			Instantiate(cu, transform.position, transform.rotation);
+        }
 
 		for(int i = 0; i < items.Length; i++)
 		{
