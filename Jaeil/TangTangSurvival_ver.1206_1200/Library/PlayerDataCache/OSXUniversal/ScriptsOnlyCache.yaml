@@ -20,6 +20,7 @@ ScriptsOnlyBuild:
     - Menu
     - MenuManager
     - Mob
+    - MobSpawnManager
     - PlaySound
     - PlayerController
     - PlayerGroundCheck
@@ -64,12 +65,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -133,8 +128,35 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve:
   - assembly: Assembly-CSharp
+    fullTypeName: RoomListItem
+    methodName: OnClick
+  - assembly: Assembly-CSharp
     fullTypeName: PlayerNameManager
     methodName: OnUsernameInputValueChanged
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuManager
+    methodName: CloseMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuManager
+    methodName: OpenMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: Launcher
+    methodName: CreateRoom
+  - assembly: Assembly-CSharp
+    fullTypeName: Launcher
+    methodName: LeaveRoom
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuManager
+    methodName: OpenMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: Launcher
+    methodName: Quit
+  - assembly: Assembly-CSharp
+    fullTypeName: Launcher
+    methodName: StartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuManager
+    methodName: OpenMenu
   sceneClasses:
     Assets/Scenes/Exit.unity:
     - Class: 1
@@ -268,6 +290,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4086}
     - Class: 114
       Script: {instanceID: 4212}
+    - Class: 114
+      Script: {instanceID: 4392}
     - Class: 114
       Script: {instanceID: 4658}
     - Class: 114
@@ -470,23 +494,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5376}
     - Class: 114
-      Script: {instanceID: 22794}
+      Script: {instanceID: 27944}
     - Class: 114
-      Script: {instanceID: 22804}
+      Script: {instanceID: 27954}
     - Class: 114
-      Script: {instanceID: 25488}
+      Script: {instanceID: 30732}
     - Class: 114
-      Script: {instanceID: 25496}
+      Script: {instanceID: 30740}
     - Class: 114
-      Script: {instanceID: 25560}
+      Script: {instanceID: 30804}
     - Class: 114
-      Script: {instanceID: 25568}
+      Script: {instanceID: 30812}
     - Class: 114
-      Script: {instanceID: 25576}
+      Script: {instanceID: 30820}
     - Class: 114
-      Script: {instanceID: 25648}
+      Script: {instanceID: 30892}
     - Class: 114
-      Script: {instanceID: 26888}
+      Script: {instanceID: 31358}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -516,10 +540,6 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
-      Script: {instanceID: 0}
-    - Class: 258
-      Script: {instanceID: 0}
-    - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -1304,7 +1324,7 @@ ScriptsOnlyBuild:
     className: TMP_FrameRateCounter
   - hash:
       serializedVersion: 2
-      Hash: e38555ba7b410bd53701fb3ddd1e129e
+      Hash: 71e655cec4e8c08c9d9db2e2381b525f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Launcher
@@ -2045,4 +2065,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/Exit.unity
-  playerPath: /Users/Jiwon/Desktop/test.app
+  playerPath: "/Users/chris/Desktop/\u1100\u116E\u11A8\u1106\u1175\u11AB\u1103\u1162\u1112\u1161\u11A8\u1100\u116D/2022-2/\u1100\u1166\u110B\u1175\u11B7\u1109\u1169\u1111\u1173\u1110\u1173\u110B\u1170\u110B\u1165/git/GameSoftware/Jaeil/TangTangSurvival_ver.1206_1200/Build.app"
