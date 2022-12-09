@@ -8,7 +8,6 @@ using System.IO;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
 	public static RoomManager Instance;
-
 	void Awake()
 	{
 		if(Instance)
@@ -38,7 +37,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		{
 			PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
 
-			PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "EnemyManager"), Vector3.zero, Quaternion.identity);
+			if (PhotonNetwork.IsMasterClient)
+			{
+				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "EnemyManager"), Vector3.zero, Quaternion.identity);
+			}
 		
 		}
 	}

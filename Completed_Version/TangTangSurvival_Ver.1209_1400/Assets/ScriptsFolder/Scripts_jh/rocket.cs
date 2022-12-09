@@ -19,7 +19,7 @@ public class rocket : MonoBehaviour
                     Mob m = hitColliders_jhj[i].GetComponent<Mob>();
                     m.OnrocketDamage(r_damage_jhj);
 
-                    Debug.Log("로켓" + r_damage_jhj + "데미지!!");
+                    // Debug.Log("로켓" + r_damage_jhj + "데미지!!");
                 }
                 i++;
 

@@ -24,7 +24,7 @@ public class ExpCapsuleScript : MonoBehaviour
 			// ???????????? ?????? Destroy!!
 			transform.position = Vector3.SmoothDamp(transform.position, playerTransform, ref vel, 0.1f);
 		}
-		Destroy(gameObject, 60f);
+		Destroy(gameObject, 10f);
 	}
 	private void OnTriggerEnter(Collider other)
 	{
@@ -32,7 +32,7 @@ public class ExpCapsuleScript : MonoBehaviour
 		{
 			playerTransform = other.transform.position;
 			tangetial = true;
-			Debug.Log("?????? ????!");
+			// Debug.Log("?????? ????!");
 			gameManager = GameObject.Find("Canvas").GetComponent<GameManagerScript_pwj>();
 			if (gameManager != null) { gameManager.SetExp(); Destroy(gameObject, 0.3f); return; }
 		}

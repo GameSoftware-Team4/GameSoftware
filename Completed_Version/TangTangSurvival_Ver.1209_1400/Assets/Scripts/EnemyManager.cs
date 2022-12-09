@@ -35,7 +35,10 @@ public class EnemyManager : MonoBehaviourPunCallbacks
 
     public void DestroyMonster() //���Ͱ� óġ���� �� �����ϴ� ������ ���� ���̰� óġ�� ���� ����
     {
-        monsterCnt -= 1;
+        if (isMaster)
+        {
+            monsterCnt -= 1;
+        }
         monsterDeathCnt++;
         if (monsterDeathCnt >= levelUp) //���� óġ�� ���� level�� ������ �޼��� ��� ����Ʈ ���� ����
         {
@@ -50,7 +53,8 @@ public class EnemyManager : MonoBehaviourPunCallbacks
     }
     IEnumerator SpawnMonster() //������ ����� ������ ��ҿ��� ������ ���Ͱ� �����ȴ�.
     {
-        if (monsterCnt < keepMonsterCnt)
+        //(monsterCnt < keepMonsterCnt)
+        if (monsterCnt > -1 && monsterCnt <= 500)
         {
             monsterCnt++;
             yield return new WaitForSeconds(Random.Range(0, spawnTime));

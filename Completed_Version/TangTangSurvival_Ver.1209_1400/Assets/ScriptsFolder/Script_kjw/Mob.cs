@@ -17,6 +17,7 @@ public class Mob : MonoBehaviour
     float delay_speed = 0.5f;
     public bool isDead;
     public PhotonView photonView;
+    public GameObject exp;
     PhotonView PV;
 
     public AudioClip clip;
@@ -29,6 +30,7 @@ public class Mob : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
+        exp = Resources.Load<GameObject>("pwj_prefab/Exp");
         enemy = GetComponent<Enemy>();
         this.gameObject.SetActive(true);
         gameObject.tag = "Monster";
@@ -118,8 +120,9 @@ public class Mob : MonoBehaviour
     {
         curHealth -= _damage;
         mat.color = Color.blue;
+        // photonView.RPC("PlayAudio", RpcTarget.All);
         photonView.RPC("PlayAudio", RpcTarget.All);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
 
         if (curHealth > 0)
         {
@@ -127,11 +130,13 @@ public class Mob : MonoBehaviour
         }
         else
         {
+            gameObject.tag = "Untagged";
+            gameObject.layer = 0;
             isDead = true;
             mat.color = Color.gray;
             enemy.DieAnim();
             Die();
-            Debug.Log("Die");
+            // Debug.Log("Die");
             Invoke("DestroyMob", 1f);
         }
     }
@@ -159,7 +164,7 @@ public class Mob : MonoBehaviour
     }
     private void DestroyMob()
     {
-        Debug.Log("파괴!");
+        // Debug.Log("파괴!");
         mat.color = Color.white;
         if(PV.IsMine)
         {
@@ -176,13 +181,17 @@ public class Mob : MonoBehaviour
 
     void Die()
     {
-        gameObject.tag = "Untagged";
-        gameObject.layer = 0;
-
-        EnemyManager enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        if (enemyManager != null) { enemyManager.DestroyMonster(); }
-        GameObject exp = PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "Exp"), gameObject.transform.position, gameObject.transform.rotation);
-        //gameManager = GameObject.Find("Canvas").GetComponent<GameManagerScript_pwj>();
-        // if (gameManager != null) { gameManager.SetExp(); }
+        if (isDead)
+        {
+            EnemyManager enemyManager = GameObject.Find("EnemyManager(Clone)").GetComponent<EnemyManager>();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                if (enemyManager != null) { enemyManager.DestroyMonster(); }
+            }
+            // GameObject exp = PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "Exp"), gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(exp, gameObject.transform.position, gameObject.transform.rotation);
+            //gameManager = GameObject.Find("Canvas").GetComponent<GameManagerScript_pwj>();
+            // if (gameManager != null) { gameManager.SetExp(); }
+        }
     }
 }

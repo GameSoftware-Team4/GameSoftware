@@ -37,8 +37,8 @@ public class Grenade : MonoBehaviour
     {
         if (eff_start)
         {
-            var e1 = PhotonNetwork.Instantiate(Path.Combine("Prefabs_jhj", "gre_epx"), t.position, gameObject.transform.rotation);
-            var e2 = PhotonNetwork.Instantiate(Path.Combine("Prefabs_jhj","poison_smoke"), t.position, gameObject.transform.rotation);
+            GameObject e1 = PhotonNetwork.Instantiate(Path.Combine("Prefabs_jhj", "gre_epx"), t.position, gameObject.transform.rotation);
+            GameObject e2 = PhotonNetwork.Instantiate(Path.Combine("Prefabs_jhj","poison_smoke"), t.position, gameObject.transform.rotation);
             Destroy(e1, 5f);
             Destroy(e2, 5f);
 

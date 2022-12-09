@@ -20,7 +20,7 @@ public class Skill_set : MonoBehaviour
     GameObject b_2;
 
     bool trigger_6 = false;
-    float cool_ep = 1f;  //폭발의 쿨타임
+    float cool_ep = 6f;  //폭발의 쿨타임
     float cool_ice = 10f;//아이스의 쿭타임
     float cool_gre = 5f;//수류탄의 쿨타임
     float cool_ta = 30f;
@@ -207,7 +207,8 @@ public class Skill_set : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             GameObject skill = PhotonNetwork.Instantiate(Path.Combine("Skills", "exp_eff"), gameObject.transform.position, gameObject.transform.rotation); //범위 스킬 오브젝트를 생성하고 일정시간후 프리펩을 제거
-            Destroy(skill, 0.6f);
+            StartCoroutine(DestroyTime(0.6f, skill));
+            // Destroy(skill, 0.6f);
             StartCoroutine(CoolTime(cool_ep, 2));
         }
 
@@ -218,7 +219,8 @@ public class Skill_set : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             GameObject skill = PhotonNetwork.Instantiate(Path.Combine("Skills", "ice_eff"), gameObject.transform.position, gameObject.transform.rotation); //범위 스킬 오브젝트를 생성하고 일정시간후 프리펩을 제거
-            Destroy(skill, 0.5f);
+            StartCoroutine(DestroyTime(0.5f, skill));
+            //Destroy(skill, 0.5f);
             StartCoroutine(CoolTime(cool_ice, 3));
         }
 
@@ -235,7 +237,8 @@ public class Skill_set : MonoBehaviour
                 Rigidbody rb = grenade2.GetComponent<Rigidbody>();
                 rb.AddForce(Camera.main.transform.forward * throw_power, ForceMode.Impulse);
                 StartCoroutine(CoolTime(cool_gre, 4));
-                Destroy(grenade2, 6f);
+                StartCoroutine(DestroyTime(6, grenade2));
+                // Destroy(grenade2, 6f);
             }
             else
             {
@@ -244,11 +247,10 @@ public class Skill_set : MonoBehaviour
                 Rigidbody rb = grenade.GetComponent<Rigidbody>();
                 rb.AddForce(Camera.main.transform.forward * throw_power, ForceMode.Impulse);
                 StartCoroutine(CoolTime(cool_gre, 4));
+                StartCoroutine(DestroyTime(6, grenade));
                 Destroy(grenade, 6f);
+                
             }
-
-
-
         }
     }
 
@@ -258,7 +260,8 @@ public class Skill_set : MonoBehaviour
         {
             GameObject t = PhotonNetwork.Instantiate(Path.Combine("Skills", "T_skill"), gameObject.transform.position, gameObject.transform.rotation);
             StartCoroutine(CoolTime(cool_ta, 5));
-            Destroy(t, 20f);
+            StartCoroutine(DestroyTime(20, t));
+            // Destroy(t, 20f);
         }
     }
 
@@ -266,10 +269,9 @@ public class Skill_set : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Debug.Log("터렛 생성 완료");
+            // Debug.Log("터렛 생성 완료");
             PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "TurretPref"), gameObject.transform.position + new Vector3(2.0f, -1f, 2.0f), transform.rotation);
             StartCoroutine(CoolTime(cool_turret, 6));
-
         }
     }
 
@@ -303,6 +305,11 @@ public class Skill_set : MonoBehaviour
         lockSkill(trigger);
         yield return new WaitForSeconds(cool);
         UnlockSkill(trigger);
+    }
+    IEnumerator DestroyTime(float t, GameObject go)
+    {
+        yield return new WaitForSeconds(t);
+        PhotonNetwork.Destroy(go);
     }
 }
 

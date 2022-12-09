@@ -19,6 +19,8 @@ public class RocketMangerScript_pwj : MonoBehaviour
 
 	// �̻��� �ر� ON OFF
 	GameObject controller;
+	GameObject controller1;
+	GameObject controller2;
 	private bool missile1 = false;
 	private bool missile2 = false;
 	private bool missile3 = false;
@@ -53,9 +55,9 @@ public class RocketMangerScript_pwj : MonoBehaviour
 			if(missile1)
 				controller = PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "Missile"), shotPos.position + new Vector3(0, 2, 0), shotPos.rotation);
 			if (missile2)
-				controller = PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "Missile"), shotPos2.position + new Vector3(0, 2, 0), shotPos2.rotation);
+				controller1 = PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "Missile"), shotPos2.position + new Vector3(0, 2, 0), shotPos2.rotation);
 			if (missile3)
-				controller = PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "Missile"), shotPos3.position + new Vector3(0, 2, 0), shotPos3.rotation);
+				controller2 = PhotonNetwork.Instantiate(Path.Combine("pwj_prefab", "Missile"), shotPos3.position + new Vector3(0, 2, 0), shotPos3.rotation);
 			
 			checkTime = 0;
 		}
@@ -66,21 +68,21 @@ public class RocketMangerScript_pwj : MonoBehaviour
 	{
 		int curEXP = gameManger.GetExp();
 
-		if (curEXP > 750 && !missile1)
+		if (curEXP > 1000 && !missile1)
 		{
 			GameObject.Find("RocketManager").transform.GetChild(0).gameObject.SetActive(true);
 			shotPos = GameObject.Find("RocketManager").transform.Find("Rocket" + 1).transform.Find("RocketSpawner").gameObject.transform;
 			missile1 = true;
 		}
 
-		if (curEXP > 1500 && !missile2)
+		if (curEXP > 4500 && !missile2)
 		{
 			GameObject.Find("RocketManager").transform.GetChild(1).gameObject.SetActive(true);
 			shotPos2 = GameObject.Find("RocketManager").transform.Find("Rocket" + 2).transform.Find("RocketSpawner").gameObject.transform;
 			missile2 = true;
 		}
 
-		if (curEXP > 3000 && !missile3)
+		if (curEXP > 9000 && !missile3)
 		{
 			GameObject.Find("RocketManager").transform.GetChild(2).gameObject.SetActive(true);
 			shotPos3 = GameObject.Find("RocketManager").transform.Find("Rocket" + 3).transform.Find("RocketSpawner").gameObject.transform;

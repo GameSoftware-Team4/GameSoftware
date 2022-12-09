@@ -18,7 +18,7 @@ public class explosion_jhj : MonoBehaviour
                 Mob m = hitColliders_jhj[i].GetComponent<Mob>();
                 m.OnexpDamaged(ep_damage_jhj);
 
-                Debug.Log("气惯!! " + ep_damage_jhj + "单固瘤!!");
+                // Debug.Log("气惯!! " + ep_damage_jhj + "单固瘤!!");
             }
             i++;
 

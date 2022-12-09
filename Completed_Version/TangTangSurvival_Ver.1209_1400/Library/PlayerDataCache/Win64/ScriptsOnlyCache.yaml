@@ -24,6 +24,7 @@ ScriptsOnlyBuild:
     - MenuManager
     - Mob
     - MobSpawnManager
+    - PhotonTimer
     - PlaySound
     - PlayerController
     - PlayerGroundCheck
@@ -140,7 +141,7 @@ ScriptsOnlyBuild:
     methodName: OnUsernameInputValueChanged
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
-    methodName: CloseMenu
+    methodName: OpenMenu
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
     methodName: OpenMenu
@@ -296,13 +297,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4086}
     - Class: 114
-      Script: {instanceID: 4212}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 4392}
+      Script: {instanceID: 4394}
     - Class: 114
-      Script: {instanceID: 4658}
+      Script: {instanceID: 4660}
     - Class: 114
-      Script: {instanceID: 5184}
+      Script: {instanceID: 5186}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -469,57 +470,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4172}
     - Class: 114
-      Script: {instanceID: 4342}
+      Script: {instanceID: 4200}
     - Class: 114
-      Script: {instanceID: 4476}
+      Script: {instanceID: 4344}
     - Class: 114
-      Script: {instanceID: 4546}
+      Script: {instanceID: 4478}
     - Class: 114
-      Script: {instanceID: 4588}
+      Script: {instanceID: 4548}
     - Class: 114
-      Script: {instanceID: 4604}
+      Script: {instanceID: 4590}
     - Class: 114
-      Script: {instanceID: 4788}
+      Script: {instanceID: 4606}
     - Class: 114
-      Script: {instanceID: 4876}
+      Script: {instanceID: 4790}
     - Class: 114
-      Script: {instanceID: 4914}
+      Script: {instanceID: 4878}
     - Class: 114
       Script: {instanceID: 4916}
     - Class: 114
-      Script: {instanceID: 4928}
+      Script: {instanceID: 4918}
     - Class: 114
-      Script: {instanceID: 4942}
+      Script: {instanceID: 4930}
     - Class: 114
-      Script: {instanceID: 4960}
+      Script: {instanceID: 4944}
     - Class: 114
-      Script: {instanceID: 5070}
+      Script: {instanceID: 4962}
     - Class: 114
-      Script: {instanceID: 5076}
+      Script: {instanceID: 5072}
     - Class: 114
-      Script: {instanceID: 5170}
+      Script: {instanceID: 5078}
     - Class: 114
-      Script: {instanceID: 5184}
+      Script: {instanceID: 5172}
     - Class: 114
-      Script: {instanceID: 5234}
+      Script: {instanceID: 5186}
     - Class: 114
-      Script: {instanceID: 5376}
+      Script: {instanceID: 5236}
     - Class: 114
-      Script: {instanceID: 22576}
+      Script: {instanceID: 5378}
     - Class: 114
-      Script: {instanceID: 22586}
+      Script: {instanceID: 22656}
     - Class: 114
-      Script: {instanceID: 25374}
-    - Class: 114
-      Script: {instanceID: 25382}
-    - Class: 114
-      Script: {instanceID: 25446}
+      Script: {instanceID: 22666}
     - Class: 114
       Script: {instanceID: 25454}
     - Class: 114
       Script: {instanceID: 25462}
     - Class: 114
+      Script: {instanceID: 25526}
+    - Class: 114
       Script: {instanceID: 25534}
+    - Class: 114
+      Script: {instanceID: 25542}
+    - Class: 114
+      Script: {instanceID: 25614}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1351,7 +1354,7 @@ ScriptsOnlyBuild:
     className: CullingHandler
   - hash:
       serializedVersion: 2
-      Hash: 1af219b46e626dc61ea95db88cc481e7
+      Hash: dcc1ac7be8b9130ede5fe1dede00bf54
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Mob
@@ -1589,6 +1592,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyController
+  - hash:
+      serializedVersion: 2
+      Hash: c361ab72f56d2a888cd61da91b5c34cc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PhotonTimer
   - hash:
       serializedVersion: 2
       Hash: a1ca1237bad0f30ea5ba8f4060929114
@@ -2074,5 +2083,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/Exit.unity
-  playerPath: "C:/Users/\uC815\uD574\uC900/OneDrive/\uBC14\uD0D5 \uD654\uBA74/game/FPS
-    Game.exe"
+  playerPath: "C:/Users/20185291/Desktop/\uD0D5\uD0D5/ver14/FPS Game.exe"

@@ -158,10 +158,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	IEnumerator DamageOff()
     {
 		damage_trigger = false;
-		Debug.Log("무적");
+		// Debug.Log("무적");
 		yield return new WaitForSeconds(1f);
 		damage_trigger = true;
-		Debug.Log("무적 끝");
+		// Debug.Log("무적 끝");
     }
 
 	[PunRPC]

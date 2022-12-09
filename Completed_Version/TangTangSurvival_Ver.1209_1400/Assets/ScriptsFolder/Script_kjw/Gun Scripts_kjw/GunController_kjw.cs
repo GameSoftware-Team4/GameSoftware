@@ -92,16 +92,16 @@ public class GunController_kjw : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(RetroActionCoroutine());
 
-        Debug.Log("총알 발사 함");
+        // Debug.Log("총알 발사 함");
     }
 
     private void Hit()
     {
         // 카메라 월드 좌표!! (localPosition이 아님)
-        Debug.Log(theCam.transform);
+        // Debug.Log(theCam.transform);
         if (Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range, layerMask))
         {
-            Debug.Log(hitInfo.transform.name);
+            // Debug.Log(hitInfo.transform.name);
            
             hitInfo.transform.GetComponent<Mob>().Damage(currentGun.damage, transform.position);
             
@@ -145,7 +145,7 @@ public class GunController_kjw : MonoBehaviour
         }
         else
         {
-            Debug.Log("소유한 총알이 없습니다.");
+            // Debug.Log("소유한 총알이 없습니다.");
         }
     }
 

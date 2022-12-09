@@ -47,11 +47,11 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        stageUp_time = 639f;
+        stageUp_time = 720f;
         stageLv = 1;
         s_up_trigger = false;
 
-        enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        enemy = GameObject.Find("EnemyManager(Clone)").GetComponent<EnemyManager>();
 
         player = gameObject.GetComponent<PlayerController>();
         skill_set = gameObject.GetComponent<Skill_set>();
@@ -104,8 +104,11 @@ public class UIManager : MonoBehaviour
             Debug.Log("stage UP!");
             stageLv++;
             stage.text = "STAGE " + stageLv;
-            enemy.keepMonsterCnt += 15;
-            stageUp_time -= 81;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                enemy.keepMonsterCnt += 3;
+            }
+            stageUp_time -= 15;
             player.maxHealth += 50;
             player.currentHealth = player.maxHealth;
             StartCoroutine(stageup_message());
