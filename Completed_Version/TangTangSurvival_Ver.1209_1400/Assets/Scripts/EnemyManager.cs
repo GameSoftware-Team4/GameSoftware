@@ -10,7 +10,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks
     PhotonView PV;
 
     [SerializeField]
-    int monsterCnt = 0; //�����Ǵ� ���� ��ü���� ������ ����
+    public int monsterCnt = 0; //�����Ǵ� ���� ��ü���� ������ ����
     [SerializeField]
     private string[] poolingObjectPrefabName;
 
